@@ -1,4 +1,6 @@
-public class ArrayVector {
+package vectors;
+
+public class ArrayVector implements Vector {
     private double[] elements;
 
     public ArrayVector(int length) {
@@ -6,14 +8,18 @@ public class ArrayVector {
     }
 
     public double getElement(int index) {
+        if (index >= getSize())
+            throw new VectorIndexOutOfBoundsException();
         return elements[index];
     }
 
     public void setElement(int index, double value) {
+        if (index >= getSize())
+            throw new VectorIndexOutOfBoundsException();
         elements[index] = value;
     }
 
-    public int setSize() {
+    public int getSize() {
         return elements.length;
     }
 
@@ -48,30 +54,11 @@ public class ArrayVector {
     }
 
     public double getNorm() {
-        return Math.sqrt(scalarMult(this));
-    }
-
-    public ArrayVector mult(double n) {
-        ArrayVector vector = new ArrayVector(elements.length);
-        for (int i = 0; i < elements.length; i++) {
-            vector.setElement(i, elements[i] * n);
+        try {
+            return Math.sqrt(Vectors.scalarMult(this, this));
+        } catch (IncompatibleVectorSizesException e) {
+            e.printStackTrace();
         }
-        return vector;
-    }
-
-    public ArrayVector sum(ArrayVector vector) {
-        ArrayVector result = new ArrayVector(elements.length);
-        for (int i = 0; i < elements.length; i++) {
-            result.setElement(i, elements[i] + vector.getElement(i));
-        }
-        return result;
-    }
-
-    public double scalarMult(ArrayVector vector) {
-        double sum = 0.0;
-        for (int i = 0; i < elements.length; i++) {
-            sum += elements[i] * vector.getElement(i);
-        }
-        return sum;
+        return -1.0;
     }
 }
