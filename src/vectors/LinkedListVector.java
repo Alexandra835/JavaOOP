@@ -157,33 +157,4 @@ public class LinkedListVector implements Vector {
             }
         }
     }
-
-    public static void main(String[] args) throws IncompatibleVectorSizesException {
-        double[] xdata = {1.0, 2.0, 3.0, 4.0};
-        double[] ydata = {5.0, 2.0, 4.0, 1.0};
-
-        LinkedListVector x = new LinkedListVector();
-        for (int i = 0; i < xdata.length; i++) {
-            x.add(xdata[i]);
-        }
-        LinkedListVector y = new LinkedListVector();
-        for (int i = 0; i < ydata.length; i++) {
-            y.add(ydata[i]);
-        }
-
-        System.out.println("x = " + vectorToString(x));
-        System.out.println("y = " + vectorToString(y));
-        System.out.println("x + y = " + vectorToString(Vectors.sum(x, y)));
-        System.out.println("10x = " + vectorToString(Vectors.mult(x, 10.0)));
-        System.out.println("|x| = " + x.getNorm());
-        System.out.println("<x, y> = " + Vectors.scalarMult(x, y));
-    }
-
-    private static String vectorToString(Vector vector) {
-        String result = "";
-        for (int i = 0; i < vector.getSize() - 1; i++) {
-            result += vector.getElement(i) + ", ";
-        }
-        return result + vector.getElement(vector.getSize() - 1);
-    }
 }
