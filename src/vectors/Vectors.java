@@ -1,5 +1,7 @@
 package vectors;
 
+import java.io.*;
+
 public class Vectors {
 
     public static ArrayVector mult(Vector vector, double n) {
@@ -28,5 +30,49 @@ public class Vectors {
             sum += vector1.getElement(i) * vector2.getElement(i);
         }
         return sum;
+    }
+
+    public static void outputVector (Vector v, OutputStream out) throws IOException {
+        DataOutputStream outputStream = new DataOutputStream(out);
+        outputStream.writeInt(v.getSize());
+        for (int i = 0; i < v.getSize(); i++) {
+            outputStream.writeDouble(v.getElement(i));
+        }
+        outputStream.close();
+    }
+
+    public static Vector inputVector (InputStream in) throws IOException {
+        DataInputStream inputStream = new DataInputStream(in);
+        int length = inputStream.readInt();
+        Vector vector = new ArrayVector(length);
+        for (int i = 0; i < length; i++) {
+            vector.setElement(i, inputStream.readDouble());
+        }
+        inputStream.close();
+        return vector;
+    }
+
+    public static void writeVector (Vector v, Writer out) {
+        PrintWriter writer = new PrintWriter(out);
+        writer.print(v.getSize());
+        writer.print(' ');
+        for (int i = 0; i < v.getSize(); i++) {
+            writer.print(v.getElement(i));
+            writer.print(' ');
+        }
+        writer.close();
+    }
+
+    public static Vector readVector (Reader in) throws IOException {
+        StreamTokenizer tokenizer = new StreamTokenizer(in);
+        tokenizer.nextToken();
+        int length = (int) tokenizer.nval;
+        Vector vector = new ArrayVector(length);
+        for (int i = 0; i < length; i++) {
+            tokenizer.nextToken();
+            vector.setElement(i, tokenizer.nval);
+        }
+        in.close();
+        return vector;
     }
 }
