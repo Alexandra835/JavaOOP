@@ -12,14 +12,14 @@ public class LinkedListVector implements Vector, Serializable {
 
     @Override
     public double getElement(int index) {
-        if (index >= getSize())
+        if (index < 0 || index >= getSize())
             throw new VectorIndexOutOfBoundsException();
         return elements.get(index);
     }
 
     @Override
     public void setElement(int index, double value) {
-        if (index >= getSize())
+        if (index < 0 || index >= getSize())
             throw new VectorIndexOutOfBoundsException();
         elements.set(index, value);
     }

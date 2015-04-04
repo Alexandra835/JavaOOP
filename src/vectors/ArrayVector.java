@@ -10,13 +10,13 @@ public class ArrayVector implements Vector, Serializable {
     }
 
     public double getElement(int index) {
-        if (index >= getSize())
+        if (index < 0 || index >= getSize())
             throw new VectorIndexOutOfBoundsException();
         return elements[index];
     }
 
     public void setElement(int index, double value) {
-        if (index >= getSize())
+        if (index < 0 || index >= getSize())
             throw new VectorIndexOutOfBoundsException();
         elements[index] = value;
     }

@@ -55,10 +55,9 @@ public class Vectors {
     public static void writeVector (Vector v, Writer out) {
         PrintWriter writer = new PrintWriter(out);
         writer.print(v.getSize());
-        writer.print(' ');
         for (int i = 0; i < v.getSize(); i++) {
-            writer.print(v.getElement(i));
             writer.print(' ');
+            writer.print(v.getElement(i));
         }
         writer.close();
     }
