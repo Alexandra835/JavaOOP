@@ -8,5 +8,5 @@ public interface Vector {
 
     int getSize();
 
-    public double getNorm();
+    double getNorm();
 }
