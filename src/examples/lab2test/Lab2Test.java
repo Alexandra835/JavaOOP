@@ -5,7 +5,7 @@ import vectors.Vector;
 
 import java.util.Random;
 
-public class Lab2Test {
+public final class Lab2Test {
     public static void main(String[] args) {
         // ===============================================
         double[] xdata = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0};
@@ -34,10 +34,10 @@ public class Lab2Test {
         return sum;
     }
 
-    private static void printOver50(int[] array){
+    private static void printOver50(int[] array) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] > 50)
-            System.out.println(array[i]);
+                System.out.println(array[i]);
         }
     }
 }
