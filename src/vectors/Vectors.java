@@ -74,4 +74,8 @@ public class Vectors {
         in.close();
         return vector;
     }
+
+    public Vector unmodifiableVector(Vector vector) {
+        return new UnmodifiableVector(vector);
+    }
 }

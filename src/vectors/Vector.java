@@ -1,6 +1,8 @@
 package vectors;
 
-public interface Vector {
+import java.io.Serializable;
+
+public interface Vector extends Serializable, Cloneable {
 
     double getElement(int index);
 
@@ -9,4 +11,6 @@ public interface Vector {
     int getSize();
 
     double getNorm();
+
+    Object clone() throws CloneNotSupportedException;
 }

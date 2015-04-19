@@ -1,13 +1,20 @@
 package vectors;
 
-import java.io.Serializable;
+import java.io.*;
 
-public class LinkedListVector implements Vector, Serializable {
+public class LinkedListVector implements Vector {
 
     private LinkedList elements;
 
     public LinkedListVector() {
         elements = new LinkedList();
+    }
+
+    public LinkedListVector(int size) {
+        this();
+        for (int i = 0; i < size; i++) {
+            elements.add(0.0);
+        }
     }
 
     @Override
@@ -49,6 +56,58 @@ public class LinkedListVector implements Vector, Serializable {
 
     public double remove(int index) {
         return elements.remove(index);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (obj == this)
+            return true;
+        if (!(obj instanceof LinkedListVector))
+            return false;
+        LinkedListVector vector = (LinkedListVector) obj;
+        if (elements.size() != vector.getSize())
+            return false;
+        for (int i = 0; i < elements.size(); i++) {
+            if (elements.get(i) != vector.getElement(i))
+                return false;
+        }
+        return true;
+    }
+
+//    @Override
+//    public int hashCode() {
+//        int hash = 0;
+//        hash ^= elements.size();
+//        for (Double value : elements) {
+//            long bits = Double.doubleToLongBits(value);
+//            hash ^= (int)(bits ^ (bits >>> 32));
+//        }
+//        return hash;
+//    }
+
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Object clone = super.clone();
+        LinkedListVector result = (LinkedListVector) clone;
+        result.elements = new LinkedList();
+        for (int i = 0; i < elements.size(); i++) {
+            result.elements.add(elements.get(i));
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < elements.size(); i++) {
+            sb.append(elements.get(i));
+            if (i != elements.size() - 1)
+                sb.append(" ");
+        }
+        return sb.toString();
     }
 
     private class LinkedList implements Serializable {
