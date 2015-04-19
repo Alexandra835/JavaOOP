@@ -82,17 +82,16 @@ public class LinkedListVector implements Vector {
         return true;
     }
 
-//    @Override
-//    public int hashCode() {
-//        int hash = 0;
-//        hash ^= elements.size();
-//        for (Double value : elements) {
-//            long bits = Double.doubleToLongBits(value);
-//            hash ^= (int)(bits ^ (bits >>> 32));
-//        }
-//        return hash;
-//    }
-
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash ^= elements.size();
+        for (int i = 0; i < elements.size(); i++) {
+            long bits = Double.doubleToLongBits(elements.get(i));
+            hash ^= (int)(bits ^ (bits >>> 32));
+        }
+        return hash;
+    }
 
     @Override
     public Object clone() throws CloneNotSupportedException {
