@@ -1,5 +1,7 @@
 package vectors;
 
+import java.util.Iterator;
+
 public class UnmodifiableVector implements Vector {
 
     private Vector vector;
@@ -26,6 +28,11 @@ public class UnmodifiableVector implements Vector {
     @Override
     public double getNorm() {
         return vector.getNorm();
+    }
+
+    @Override
+    public Iterator iterator() {
+        return vector.iterator();
     }
 
     @Override

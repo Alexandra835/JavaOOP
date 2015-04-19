@@ -1,6 +1,7 @@
 package vectors;
 
 import java.io.*;
+import java.util.Iterator;
 
 public class LinkedListVector implements Vector {
 
@@ -56,6 +57,11 @@ public class LinkedListVector implements Vector {
 
     public double remove(int index) {
         return elements.remove(index);
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new LinkedListVectorIterator();
     }
 
     @Override
@@ -217,6 +223,20 @@ public class LinkedListVector implements Vector {
             public void setPrevious(Node previous) {
                 this.previous = previous;
             }
+        }
+    }
+
+    private class LinkedListVectorIterator implements Iterator {
+        private int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return index < elements.size();
+        }
+
+        @Override
+        public Object next() {
+            return elements.get(index++);
         }
     }
 }

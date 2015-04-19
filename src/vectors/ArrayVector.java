@@ -1,5 +1,7 @@
 package vectors;
 
+import java.util.Iterator;
+
 public class ArrayVector implements Vector {
     private double[] elements;
 
@@ -63,6 +65,11 @@ public class ArrayVector implements Vector {
     }
 
     @Override
+    public Iterator iterator() {
+        return new ArrayListIterator();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null)
             return false;
@@ -108,5 +115,19 @@ public class ArrayVector implements Vector {
                 sb.append(" ");
         }
         return sb.toString();
+    }
+
+    private class ArrayListIterator implements Iterator {
+        private int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return index < elements.length;
+        }
+
+        @Override
+        public Object next() {
+            return elements[index++];
+        }
     }
 }
