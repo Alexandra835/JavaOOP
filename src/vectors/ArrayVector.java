@@ -129,5 +129,10 @@ public class ArrayVector implements Vector {
         public Object next() {
             return elements[index++];
         }
+
+        @Override
+        public void remove() {
+
+        }
     }
 }

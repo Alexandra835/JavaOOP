@@ -237,5 +237,10 @@ public class LinkedListVector implements Vector {
         public Object next() {
             return elements.get(index++);
         }
+
+        @Override
+        public void remove() {
+
+        }
     }
 }
