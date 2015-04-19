@@ -2,6 +2,7 @@ package examples;
 
 import vectors.ArrayVector;
 import vectors.IncompatibleVectorSizesException;
+import vectors.Vector;
 import vectors.Vectors;
 
 public class ArrayVectorTest {
@@ -28,7 +29,7 @@ public class ArrayVectorTest {
         System.out.println("<x, y> = " + Vectors.scalarMult(x, y));
     }
 
-    private static String vectorToString(ArrayVector vector) {
+    private static String vectorToString(Vector vector) {
         String result = "";
         for (int i = 0; i < vector.getSize() - 1; i++) {
             result += vector.getElement(i) + ", ";
