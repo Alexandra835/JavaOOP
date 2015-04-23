@@ -1,4 +1,4 @@
-package examples;
+package examples.lab3;
 
 import vectors.IncompatibleVectorSizesException;
 import vectors.LinkedListVector;

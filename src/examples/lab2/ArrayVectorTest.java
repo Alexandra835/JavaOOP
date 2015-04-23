@@ -1,4 +1,4 @@
-package examples;
+package examples.lab2;
 
 import vectors.ArrayVector;
 import vectors.IncompatibleVectorSizesException;
